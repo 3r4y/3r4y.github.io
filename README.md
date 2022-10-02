@@ -17,3 +17,6 @@ this is a personal website project made using HTML and Tailwind CSS.
  [eray.codes](eray.codes)
 
 ![eray.codes](https://raw.githubusercontent.com/3r4y/3r4y.github.io/main/dist/showcase.png)
+
+
+thanks https://github.com/therisy <3
