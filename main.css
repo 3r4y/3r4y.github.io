@@ -222,7 +222,7 @@ body {
 .fp-card-title {
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 120px;
+    width: 160px;
     white-space: pre;
 }
 
@@ -330,5 +330,9 @@ body {
     .links {
         display: flex;
         justify-content: center;
+    }
+
+    .fp-card-title {
+        width: 140px;
     }
 }

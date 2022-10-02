@@ -167,18 +167,19 @@
         },
         methods: {
             contact() {
-                window.location.href = 'mailto:contact@eray.codes'
+                window.location = 'mailto:contact@eray.codes'
             },
             toggleNavbar() {
                 this.navbar = !this.navbar
             },
-            getRepos() {
+            setRepos() {
                 fetch('https://api.github.com/users/3r4y/repos')
                     .then(response => response.json())
                     .then(data => {
-                        data.forEach(repo => {
+                        console.log("sa")
+                        const repos = data.map(repo => {
                             if (!repo.fork) {
-                                this.repos.push({
+                                return {
                                     name: repo.name,
                                     description: repo.description,
                                     image: repo.owner.avatar_url,
@@ -186,16 +187,17 @@
                                     star: repo.stargazers_count,
                                     forks: repo.forks_count,
                                     issuesCount: repo.open_issues_count,
-                                })
+                                }
                             }
-                        });
+                        }).filter(repo => repo !== undefined)
 
+                        this.repos = repos.sort((a,b) => b.star - a.star);
                         this.avatar = data[0].owner.avatar_url
                     })
             }
         },
         created() {
-            this.getRepos()
+            this.setRepos()
         }
     })
 </script>
