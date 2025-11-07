@@ -6,5 +6,19 @@
     <description>Recent content in Pages on abakidev - blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://3r4y.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://3r4y.github.io/pages/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://3r4y.github.io/pages/about/</guid>
+      
+      <description>&lt;p&gt;Hi. I am a C and C++ developer and freelancer. I worked on MMORPG game mods for many years. My skills are reverse engineering, Windows internals, Windows kernel development, OS development, and game security. I also use JavaScript. I enjoy game engines, optimization.&lt;/p&gt;
+&lt;p&gt;If you want to talk or ask about your project you can write to me:&lt;/p&gt;
+&lt;p&gt;Email: &lt;a href=&#34;mailto:eraycodes@proton.me&#34;&gt;eraycodes@proton.me&lt;/a&gt;&lt;br&gt;
+Discord: kevindota&lt;/p&gt;</description>
+      
+    </item>
+    
   </channel>
 </rss>
