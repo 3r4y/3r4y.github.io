@@ -1,12 +1,56 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on veteranvoid - blog</title>
+    <title>Tags on abakidev - blog</title>
     <link>https://3r4y.github.io/tags/</link>
-    <description>Recent content in Tags on veteranvoid - blog</description>
+    <description>Recent content in Tags on abakidev - blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Nov 2025 08:18:49 +0300</lastBuildDate><atom:link href="https://3r4y.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Oct 2026 09:00:00 +0300</lastBuildDate><atom:link href="https://3r4y.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anti-Cheat</title>
+      <link>https://3r4y.github.io/tags/anti-cheat/</link>
+      <pubDate>Fri, 16 Oct 2026 09:00:00 +0300</pubDate>
+      
+      <guid>https://3r4y.github.io/tags/anti-cheat/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Malware</title>
+      <link>https://3r4y.github.io/tags/malware/</link>
+      <pubDate>Fri, 16 Oct 2026 09:00:00 +0300</pubDate>
+      
+      <guid>https://3r4y.github.io/tags/malware/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Reverse-Engineering</title>
+      <link>https://3r4y.github.io/tags/reverse-engineering/</link>
+      <pubDate>Fri, 16 Oct 2026 09:00:00 +0300</pubDate>
+      
+      <guid>https://3r4y.github.io/tags/reverse-engineering/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://3r4y.github.io/tags/windows/</link>
+      <pubDate>Fri, 16 Oct 2026 09:00:00 +0300</pubDate>
+      
+      <guid>https://3r4y.github.io/tags/windows/</guid>
+      
+      <description></description>
+      
+    </item>
+    
     <item>
       <title>Ghidra</title>
       <link>https://3r4y.github.io/tags/ghidra/</link>
@@ -35,17 +79,6 @@
       <pubDate>Mon, 03 Nov 2025 08:18:49 +0300</pubDate>
       
       <guid>https://3r4y.github.io/tags/mmorpg/</guid>
-      
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Reverse-Engineering</title>
-      <link>https://3r4y.github.io/tags/reverse-engineering/</link>
-      <pubDate>Mon, 03 Nov 2025 08:18:49 +0300</pubDate>
-      
-      <guid>https://3r4y.github.io/tags/reverse-engineering/</guid>
       
       <description></description>
       
